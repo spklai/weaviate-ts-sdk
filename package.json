@@ -1,10 +1,14 @@
 {
-  "name": "weaviate-ts-client",
+  "name": "@spklai/weaviate-ts-sdk",
   "version": "1.5.0",
   "description": "TypeScript client for Weaviate",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "require": "./dist/index.js",
