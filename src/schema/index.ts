@@ -1,4 +1,5 @@
 import ClassCreator from './classCreator';
+import ClassUpdater from './classUpdater';
 import ClassDeleter from './classDeleter';
 import ClassExists from './classExists';
 import ClassGetter from './classGetter';
@@ -17,6 +18,7 @@ import { Tenant } from '../openapi/types';
 
 export interface Schema {
   classCreator: () => ClassCreator;
+  classUpdater: () => ClassUpdater;
   classDeleter: () => ClassDeleter;
   classGetter: () => ClassGetter;
   exists: (className: string) => Promise<boolean>;
@@ -35,6 +37,7 @@ export interface Schema {
 const schema = (client: Connection): Schema => {
   return {
     classCreator: () => new ClassCreator(client),
+    classUpdater: () => new ClassUpdater(client),
     classDeleter: () => new ClassDeleter(client),
     classGetter: () => new ClassGetter(client),
     exists: (className: string) => new ClassExists(client).withClassName(className).do(),
@@ -56,6 +59,7 @@ const schema = (client: Connection): Schema => {
 
 export default schema;
 export { default as ClassCreator } from './classCreator';
+export { default as ClassUpdater } from './classUpdater';
 export { default as ClassDeleter } from './classDeleter';
 export { default as ClassGetter } from './classGetter';
 export { default as PropertyCreator } from './propertyCreator';
